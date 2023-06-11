@@ -108,7 +108,6 @@ public class alunoDAO {
             stmt.setInt(6, aluno.getId());
             stmt.execute();
             stmt.close();
-            System.out.println("ahsaushaisuhdasiudahsiuduhasd");
         }catch(SQLException e){
             
         }     
