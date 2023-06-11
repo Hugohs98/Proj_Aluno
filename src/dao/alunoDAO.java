@@ -95,30 +95,23 @@ public class alunoDAO {
     
     
     public void atualizar(Aluno aluno) {
-        String sql = "UPDATE alunos SET name_student = ?, cpf = ?, birth_student = ?, weight = ?, height = ? WHERE id_student = ?";
         connection = new ConnectionFactory().getConnection();
+        String sql = "UPDATE alunos SET name_student = ?, cpf = ?, birth_student = ?, weight = ?, height = ? WHERE id_student = ?";
         try {
+            
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getCpf());
             stmt.setString(3, aluno.getDataDeNascimento());
-            stmt.setInt(4, aluno.getPeso());
+            stmt.setDouble(4, aluno.getPeso());
             stmt.setDouble(5, aluno.getAltura());
             stmt.setInt(6, aluno.getId());
             stmt.execute();
             stmt.close();
             System.out.println("ahsaushaisuhdasiudahsiuduhasd");
         }catch(SQLException e){
-            throw new RuntimeException(e);
-        } finally {
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            }
-        }
+            
+        }     
     }
 }
 

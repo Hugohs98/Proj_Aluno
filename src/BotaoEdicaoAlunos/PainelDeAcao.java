@@ -192,8 +192,7 @@ public class PainelDeAcao extends javax.swing.JPanel {
             peso.setEditable(true);
             altura.setEditable(true);
         }
-        else{
-            Nome.setEditable(false);
+        else {
             Nome.setEditable(false);
             cpf.setEditable(false);
             data.setEditable(false);
@@ -207,6 +206,9 @@ public class PainelDeAcao extends javax.swing.JPanel {
     }
 
     private void cmdEditarActionPerformed(java.awt.event.ActionEvent evt) {
+        aluno.setNome(Nome.getText());
+        aluno.setCpf(cpf.getText());
+        aluno.setDataDeNascimento(data.getText());
         controller.updateStudent(this);
     }
 

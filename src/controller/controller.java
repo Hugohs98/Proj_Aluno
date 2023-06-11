@@ -35,7 +35,7 @@ public class controller {
               painel.getCmdView().setVisible(false);
               //ClienteGUI.atividadesGui1.painelInserirAlunos.add(painel1);
               AlunoGUI.painelInserirAlunos1.add(painel);
-
+              aluno.calculaImc();  
               contador++;
               
           }
