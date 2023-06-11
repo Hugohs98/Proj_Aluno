@@ -34,13 +34,17 @@ public class alunoDAO {
     public void adiciona(Aluno aluno) {
         String sql = "INSERT INTO alunos(name_student, cpf, birth_student, weight, height) VALUES(?, ?, ?, ?, ?)";
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getCpf());
             stmt.setString(3, aluno.getDataDeNascimento());
             stmt.setInt(4, aluno.getPeso());
             stmt.setDouble(5, aluno.getAltura());
             stmt.execute();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()){
+                aluno.setId(rs.getInt(1));
+            }
             stmt.close();
         }
         catch (SQLException u) {
@@ -75,49 +79,48 @@ public class alunoDAO {
         return this.lista;
     }
     
-    public static void excluir(Aluno aluno) {
-        Connection connection = null;
-        PreparedStatement statement = null;
+    public void excluir(Aluno aluno) {
+        String sql = "DELETE FROM alunos WHERE cpf = ?";
+        connection = new ConnectionFactory().getConnection();
 
         try {
-            String query = "DELETE FROM alunos WHERE name_student = ?";
-            statement = connection.prepareStatement(query);
-            statement.setString(1, aluno.getNome());
-
-            statement.executeUpdate();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, aluno.getCpf());
+            stmt.execute();
+            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        }    
     }
     
+    
     public void atualizar(Aluno aluno) {
-        this.connection = new ConnectionFactory().getConnection();
+        String sql = "UPDATE alunos SET name_student = ?, cpf = ?, birth_student = ?, weight = ?, height = ? WHERE id_student = ?";
+        connection = new ConnectionFactory().getConnection();
         try {
-            String query = "UPDATE alunos SET name_student = ?, birth_student = ?, weight = ?, height = ? WHERE cpf = ?";
-            PreparedStatement stmt = connection.prepareStatement(query);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getCpf());
             stmt.setString(3, aluno.getDataDeNascimento());
             stmt.setInt(4, aluno.getPeso());
             stmt.setDouble(5, aluno.getAltura());
-
-            stmt.executeUpdate();
+            stmt.setInt(6, aluno.getId());
+            stmt.execute();
+            stmt.close();
+            System.out.println("ahsaushaisuhdasiudahsiuduhasd");
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        } finally {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             }
         }
     }
+}
 
 
     

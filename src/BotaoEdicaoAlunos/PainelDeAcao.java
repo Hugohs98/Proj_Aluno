@@ -2,6 +2,7 @@ package BotaoEdicaoAlunos;
 
 
 
+import controller.controller;
 import dao.alunoDAO;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
@@ -180,15 +181,24 @@ public class PainelDeAcao extends javax.swing.JPanel {
     }//GEN-LAST:event_cmdViewActionPerformed
 
     private void cmdDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-        alunoDAO.excluir(aluno);
+        controller.deleteStudent(this);
     }
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {
         if(jCheckBox3.isSelected()){
             Nome.setEditable(true);
+            cpf.setEditable(true);
+            data.setEditable(true);
+            peso.setEditable(true);
+            altura.setEditable(true);
         }
         else{
             Nome.setEditable(false);
+            Nome.setEditable(false);
+            cpf.setEditable(false);
+            data.setEditable(false);
+            peso.setEditable(false);
+            altura.setEditable(false);
         }
     }
 
@@ -197,8 +207,7 @@ public class PainelDeAcao extends javax.swing.JPanel {
     }
 
     private void cmdEditarActionPerformed(java.awt.event.ActionEvent evt) {
-        aluno.setNome(Nome.getText());
-        alunoDAO.atualizar(aluno);
+        controller.updateStudent(this);
     }
 
 

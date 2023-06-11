@@ -1,0 +1,14 @@
+DROP DATABASE IF EXISTS proj_aluno;
+CREATE DATABASE proj_aluno;
+use proj_aluno;
+
+CREATE TABLE alunos (
+	id_student INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name_student VARCHAR(50),
+    birth_student VARCHAR(255),
+    cpf varchar(11),
+    weight numeric,
+    height numeric
+);
+
+SELECT * FROM alunos;

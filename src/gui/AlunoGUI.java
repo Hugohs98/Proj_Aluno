@@ -5,7 +5,9 @@
 package gui;
 
 import controller.controller;
+import static controller.controller.showStudents;
 import dao.alunoDAO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Aluno;
 
@@ -20,6 +22,7 @@ public class AlunoGUI extends javax.swing.JFrame {
      */
     public AlunoGUI() {
         initComponents();
+        setTitle("Cadastro de Alunos");
         controller.showStudents();
     }
     
@@ -70,7 +73,7 @@ public class AlunoGUI extends javax.swing.JFrame {
         Painel_Cadastro.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cadastro de alunos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Cadastro de alunos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
 
         Nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Nome.setForeground(new java.awt.Color(0, 0, 0));
@@ -92,25 +95,25 @@ public class AlunoGUI extends javax.swing.JFrame {
         altura.setForeground(new java.awt.Color(0, 0, 0));
         altura.setText("Altura(cm):");
 
-        Nome_Field.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Nome_Field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 1, true));
         Nome_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Nome_FieldActionPerformed(evt);
             }
         });
 
-        cpf_field.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cpf_field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 1, true));
 
-        peso_field.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        peso_field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 1, true));
 
-        altura_field.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        altura_field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 1, true));
 
-        data_field.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        data_field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 1, true));
 
         gerar.setBackground(new java.awt.Color(255, 255, 255));
-        gerar.setForeground(new java.awt.Color(0, 0, 0));
+        gerar.setForeground(new java.awt.Color(0, 153, 255));
         gerar.setText("Gerar Arquivo");
-        gerar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        gerar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 2, true));
         gerar.setContentAreaFilled(false);
         gerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,9 +122,9 @@ public class AlunoGUI extends javax.swing.JFrame {
         });
 
         gravar.setBackground(new java.awt.Color(255, 255, 255));
-        gravar.setForeground(new java.awt.Color(0, 0, 0));
+        gravar.setForeground(new java.awt.Color(0, 153, 255));
         gravar.setText("Gravar");
-        gravar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        gravar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 2, true));
         gravar.setContentAreaFilled(false);
         gravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +214,7 @@ public class AlunoGUI extends javax.swing.JFrame {
         Painel_Visualizacao.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Lista de Alunos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Lista de Alunos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -346,6 +349,7 @@ public class AlunoGUI extends javax.swing.JFrame {
         data_field.setText("");
         peso_field.setText("");
         altura_field.setText("");
+        showStudents();
     }//GEN-LAST:event_gravarActionPerformed
 
     private void gerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarActionPerformed
@@ -372,6 +376,7 @@ public class AlunoGUI extends javax.swing.JFrame {
         data_field.setText("");
         peso_field.setText("");
         altura_field.setText("");
+        showStudents();
     }//GEN-LAST:event_gerarActionPerformed
 
     private void Nome_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nome_FieldActionPerformed

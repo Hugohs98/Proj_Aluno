@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
  * @author hugoh
  */
 public class Aluno {
+    private int id;
     private String cpf;
     private String nome;
     private String dataDeNascimento;
@@ -25,16 +26,19 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String cpf, String nome, String dataDeNascimento, int peso, double altura) {
+    public Aluno(int id, String cpf, String nome, String dataDeNascimento, int peso, double altura) {
+        this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
         this.peso = peso;
         this.altura = altura;
     }
+
+    public int getId() {
+        return id;
+    }
    
-    
-    
     public String getCpf() {
         return cpf;
     }
@@ -53,6 +57,10 @@ public class Aluno {
 
     public double getAltura() {
         return altura;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCpf(String cpf) {
@@ -75,17 +83,12 @@ public class Aluno {
         this.altura = altura;
     }
 
-
     public String calculaImc() {
         double imc = (peso / (altura * altura)) * 10000; 
         String result = String.format("%.2f", imc);
         return result;
     }
-    
-    
-    
-    
-    
+     
     public void salvarArquivo() {
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(new File("C:/downloads"));
