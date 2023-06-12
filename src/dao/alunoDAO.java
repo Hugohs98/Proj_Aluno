@@ -106,10 +106,11 @@ public class alunoDAO {
             stmt.setDouble(4, aluno.getPeso());
             stmt.setDouble(5, aluno.getAltura());
             stmt.setInt(6, aluno.getId());
-            stmt.execute();
+            stmt.executeUpdate();
             stmt.close();
+            System.out.println("hduwhwiuhwd");
         }catch(SQLException e){
-            
+            e.printStackTrace();
         }     
     }
 }

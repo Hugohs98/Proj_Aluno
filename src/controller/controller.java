@@ -46,18 +46,18 @@ public class controller {
          
     }
     
-        public static void deleteStudent(PainelDeAcao studentPanel){
+        public static void deleteStudent(PainelDeAcao alunoPanel){
         if(JOptionPane.showConfirmDialog(null, "Todas as informações serão deletadas", "Deseja excluir esse(a) Aluno(a)?", JOptionPane.YES_NO_OPTION) == 0){
             alunoDAO alunoDao = new alunoDAO();
-            alunoDao.excluir(studentPanel.aluno);
+            alunoDao.excluir(alunoPanel.aluno);
             showStudents();
         }
     }
 
-    public static void updateStudent(PainelDeAcao studentPanel){
+    public static void updateStudent(PainelDeAcao alunoPanel){
         if(JOptionPane.showConfirmDialog(null, "O cadastro do Aluno sera editado", "Deseja alterar esse(a) aluno(a)?", JOptionPane.YES_NO_OPTION) == 0){
             alunoDAO alunoDao = new alunoDAO();
-            alunoDao.atualizar(studentPanel.aluno);
+            alunoDao.atualizar(alunoPanel.aluno);
             showStudents();
         }
   }
