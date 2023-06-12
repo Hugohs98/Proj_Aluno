@@ -108,7 +108,7 @@ public class alunoDAO {
             stmt.setInt(6, aluno.getId());
             stmt.executeUpdate();
             stmt.close();
-            System.out.println("hduwhwiuhwd");
+            System.out.println("Alteração feita com sucesso.");
         }catch(SQLException e){
             e.printStackTrace();
         }     
